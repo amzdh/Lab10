@@ -16,13 +16,13 @@ import javax.swing.JFrame;
 public class Sorting {
 
     /** Increment to sweep the sort. */
-    private static final int SORT_INCREMENT = 10000;
+    private static final int SORT_INCREMENT = 8;
 
     /** Total number of values to try. */
-    private static final int TOTAL_SORT_VALUES = 100;
+    private static final int TOTAL_SORT_VALUES = 8;
 
     /** Total data size. */
-    private static final int TOTAL_INTEGER_VALUES = 1000000;
+    private static final int TOTAL_INTEGER_VALUES = 64;
 
     /**
      * Bubble sort.
@@ -31,10 +31,55 @@ public class Sorting {
      * @return the sorted array, or null on failure
      */
     @SuppressWarnings("unused")
-    private static int[] bubbleSort(final int[] array) {
-        return null;
+    private static int[] bubbleSort(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < array[i - 1]) {
+                int temp = array[i];
+                array[i] = array[i - 1];
+                array[i - 1] = temp;
+            }
+        }
+        boolean isSorted = true;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < array[i - 1]) {
+                isSorted = false;
+            }
+        }
+        if (!isSorted) {
+            array = bubbleSort(array);
+        }
+        return array;
     }
 
+    /**
+     * fuck checkstyle.
+     * @param array f
+     * @return f
+     */
+    private static int max(final int[] array) {
+        int max = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
+
+    /**
+     * a.
+     * @param array a
+     * @return a
+     */
+    private static int min(final int[] array) {
+        int min = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+        return min;
+    }
     /**
      * Selection sort.
      *
@@ -43,6 +88,11 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] selectionSort(final int[] array) {
+        int[] x= new int[array.length];
+        for (int i = 0; i < x.length; i++) {
+            x[i] = max(array);
+
+        }
         return null;
     }
 
